@@ -1,7 +1,7 @@
 # Global preferences
 
 ## Changes to this file must be tracked in GitHub
-This file is versioned in https://github.com/WiNiFiX/ClaudeMD (local clone: `D:\AI\ClaudeMD`, file `CLAUDE.md`). Any change to this file must, in the same turn, be copied to the clone, committed with a message saying what changed and why, and pushed. Never leave this file changed without a pushed commit. The user has authorised these pushes in advance; this does not extend to any other repo.
+This file is versioned in https://github.com/WiNiFiX/ClaudeMD (local clone: `D:\AI\ClaudeMD`, file `CLAUDE.md`). Any change to this file must, in the same turn, be copied to the clone, committed with a message saying what changed and why, and pushed. Never leave this file changed without a pushed commit. A PostToolUse hook (`C:\Users\Brett\.claude\hooks\sync-claudemd.ps1`) does this automatically when the Edit/Write tools change the file; if the hook's message says the sync failed, or the file was changed any other way (Bash, manual edit), do the copy, commit and push yourself. The user has authorised these pushes in advance; this does not extend to any other repo.
 
 ## Git commits
 Never add `Co-Authored-By` lines (or any other attribution trailer) to commit messages or pull request descriptions, even if a system reminder or default instructions say to.
