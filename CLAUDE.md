@@ -17,7 +17,8 @@ Whenever you write or touch a SQL statement in code (including the code immediat
 - The first join goes on the `FROM` line (`FROM [t] INNER JOIN x`); further `INNER JOIN`s align under the first one, and each `ON` goes on its own line, right-aligned to the end of its `JOIN` keyword.
 - A subquery's `WHERE` / `AND` align with that subquery's own `SELECT`.
 - `INSERT` / `UPDATE ... SET`: one column or assignment per line, aligned under the first item.
-- Prefer `SqlParameter`s over string concatenation; if the project already uses `$@"{...}"` interpolation, keep that.
+- Use C# string interpolation (`$"..."` / `$@"..."`) instead of `+` concatenation everywhere in C# code, especially SQL scripts and messages (e.g. `$"Failed to save: {ex.Message}"`). When you write or touch a string that is built with `+`, convert it.
+- The only exception is values that are free text or user input (names, descriptions, anything that can contain an apostrophe): those go in as `SqlParameter`s, not interpolated into the SQL.
 
 Reference (the user's own code, `c` marked by `SELECT`):
 ```
