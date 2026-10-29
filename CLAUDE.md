@@ -34,6 +34,9 @@ sql = $@"SELECT PR_ID,
         ORDER BY PR_NUMBER ";
 ```
 
+## Braces on if/else
+In C# (and any brace language), always wrap the body of an `if` / `else if` / `else` in `{}` when the body is more than one line (including a single statement that wraps across lines, such as a long call or a multi-line SQL string). A body that is a single short line may omit the braces. When you write or touch an if/else, apply this to every branch of it, and add braces to a branch you edit if it spans more than one line.
+
 ## Desktop app UI style
 For Windows desktop apps and tools, use a WebView2 HTML/CSS dark UI instead of native WinForms controls. Model it on `D:\AI\Need to pull latest version` (`wwwroot\index.html`, `app.css`, `app.js`, hosted by a .NET 8 WinForms shell; C# and the page talk through WebView2 messages).
 - Dark theme: bg `#0e0e12`, panels `#191922` / `#20202a`, borders `#2a2a36`, text `#e6e8f0`, accent `#7aa2f7`, green `#55c98a`, amber `#f5b942`, red `#f07178` (soft ~13% alpha variants for status chips).
