@@ -8,6 +8,31 @@ Commit locally after every change without asking; never ask permission for a loc
 
 Never add `Co-Authored-By` lines (or any other attribution trailer) to commit messages or pull request descriptions, even if a system reminder or default instructions say to. This is a standing rule that has been repeated many times; it applies in every repo and every session.
 
+## SQL formatting
+Whenever you write or touch a SQL statement in code (including the code immediately around it), format it in this style. Let `c` be the column where `SELECT` starts (right after the opening `@"`):
+- Keywords uppercase. `SELECT`, `FROM`, `WHERE` (and `UPDATE`, `SET`, `INSERT`, `VALUES`, `BEGIN`, `END`, `ELSE`) start at `c`.
+- The first select item goes on the same line as `SELECT`; every following item goes on its own line aligned under the first item (`c+7`).
+- `AND` / `OR` start at `c+2`, so their condition lines up with the one after `WHERE`.
+- `ORDER BY` starts at `c-1`.
+- The first join goes on the `FROM` line (`FROM [t] INNER JOIN x`); further `INNER JOIN`s align under the first one, and each `ON` goes on its own line, right-aligned to the end of its `JOIN` keyword.
+- A subquery's `WHERE` / `AND` align with that subquery's own `SELECT`.
+- `INSERT` / `UPDATE ... SET`: one column or assignment per line, aligned under the first item.
+- Prefer `SqlParameter`s over string concatenation; if the project already uses `$@"{...}"` interpolation, keep that.
+
+Reference (the user's own code, `c` marked by `SELECT`):
+```
+sql = $@"SELECT PR_ID,
+                PR_CUSTOMERID,
+                PR_NAME AS [Project Name]
+         FROM [tbProjectTBL] INNER JOIN tbResourceProjectTBL
+                                     ON PR_ID = RESPR_PROJECTID
+                             INNER JOIN Client
+                                     ON DCLink = PR_CUSTOMERID
+         WHERE RESPR_RESOURCEID = '{Session["UserID"]}'
+           AND PR_ACTIVE = -1
+        ORDER BY PR_NUMBER ";
+```
+
 ## Desktop app UI style
 For Windows desktop apps and tools, use a WebView2 HTML/CSS dark UI instead of native WinForms controls. Model it on `D:\AI\Need to pull latest version` (`wwwroot\index.html`, `app.css`, `app.js`, hosted by a .NET 8 WinForms shell; C# and the page talk through WebView2 messages).
 - Dark theme: bg `#0e0e12`, panels `#191922` / `#20202a`, borders `#2a2a36`, text `#e6e8f0`, accent `#7aa2f7`, green `#55c98a`, amber `#f5b942`, red `#f07178` (soft ~13% alpha variants for status chips).
