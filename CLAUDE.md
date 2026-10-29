@@ -37,6 +37,12 @@ sql = $@"SELECT PR_ID,
 ## Braces on if/else
 In C# (and any brace language), always wrap the body of an `if` / `else if` / `else` in `{}` when the body is more than one line (including a single statement that wraps across lines, such as a long call or a multi-line SQL string). A body that is a single short line may omit the braces. When you write or touch an if/else, apply this to every branch of it, and add braces to a branch you edit if it spans more than one line.
 
+## Button naming
+Every button control ID must start with `btn` (camelCase after it) and say what the button does: `btnSave`, `btnRemoveTask`, `btnEntrySavedOk`. This covers `asp:Button`, `asp:LinkButton`, `asp:ImageButton` and the DevExpress `ASPxButton`s. Never leave default or generic names (`Button1`, `ASPxButton2`, `LinkButton1`), and do not use `cmd`, `bt`, `lnk`, `lb` or capital `Btn` prefixes.
+- Name the click handler after the button: `btnSave` -> `btnSave_Click` (or `btnSave_Command`), not `Button1_Click1`.
+- When you rename a button, change every reference in the same pass: the `ID`, `OnClick`/`OnCommand`, `DefaultButton="..."`, and the code-behind (controls and handler methods). Then check that no new duplicate ID or missing handler appeared.
+- When you add a button, name it right from the start. When you touch a page, fix any non-compliant button on it that you touch.
+
 ## Desktop app UI style
 For Windows desktop apps and tools, use a WebView2 HTML/CSS dark UI instead of native WinForms controls. Model it on `D:\AI\Need to pull latest version` (`wwwroot\index.html`, `app.css`, `app.js`, hosted by a .NET 8 WinForms shell; C# and the page talk through WebView2 messages).
 - Dark theme: bg `#0e0e12`, panels `#191922` / `#20202a`, borders `#2a2a36`, text `#e6e8f0`, accent `#7aa2f7`, green `#55c98a`, amber `#f5b942`, red `#f07178` (soft ~13% alpha variants for status chips).
