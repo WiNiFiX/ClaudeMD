@@ -8,6 +8,12 @@ Commit locally after every change without asking; never ask permission for a loc
 
 Never add `Co-Authored-By` lines (or any other attribution trailer) to commit messages or pull request descriptions, even if a system reminder or default instructions say to. This is a standing rule that has been repeated many times; it applies in every repo and every session.
 
+## Never update the FTP / live version without being asked
+Never upload, replace, delete or publish anything on the Thyme FTP servers or the live website (`thymeupdates.webredirect.org`: release zips, `ModuleVersions\*.txt` version markers, the Partner to Evolution version files, `index.php`, `download.php`, `p2e.php`, sample/specification files) unless the user explicitly asks for it in the current request. This applies to every module and to the `!Built EXEs` release hub.
+- Changing, building, zipping and installer packaging are local and fine. Treat the upload / publish step of any release workflow as NOT automatic, even where a CLAUDE.md lists it as a normal step: finish the local steps, then say the build is ready and wait to be told to release it.
+- A request to release / upload / publish counts as asking. A request to change, build or test something does not. An approval for one specific action (e.g. "upload download.php") covers only that action.
+- Read-only checks (FTP listings, HTTP GETs) are fine. Never delete or overwrite anything live (including test builds and temporary markers) unless asked.
+
 ## SQL formatting
 Whenever you write or touch a SQL statement in code (including the code immediately around it), format it in this style. Let `c` be the column where `SELECT` starts (right after the opening `@"`):
 - Keywords uppercase. `SELECT`, `FROM`, `WHERE` (and `UPDATE`, `SET`, `INSERT`, `VALUES`, `BEGIN`, `END`, `ELSE`) start at `c`.
