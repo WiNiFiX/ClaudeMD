@@ -8,6 +8,9 @@ Commit locally after every change without asking; never ask permission for a loc
 
 Never add `Co-Authored-By` lines (or any other attribution trailer) to commit messages or pull request descriptions, even if a system reminder or default instructions say to. This is a standing rule that has been repeated many times; it applies in every repo and every session.
 
+## Small functions, one job each
+Always simplify and reduce the size of functions / methods, especially in new changes and in code you touch. Follow one function / method per job / task (separation of concerns): a method that validates, queries, formats and updates the UI should be split into one method per job, each with a name that says that job. Prefer extracting a helper over adding more lines to a long method, and reuse an existing helper instead of pasting a block a second time. Do not lose functionality when simplifying.
+
 ## Never update the FTP / live version without being asked
 Never upload, replace, delete or publish anything on the Thyme FTP servers or the live website (`thymeupdates.webredirect.org`: release zips, `ModuleVersions\*.txt` version markers, the Partner to Evolution version files, `index.php`, `download.php`, `p2e.php`, sample/specification files) unless the user explicitly asks for it in the current request. This applies to every module and to the `!Built EXEs` release hub.
 - Changing, building, zipping and installer packaging are local and fine. Treat the upload / publish step of any release workflow as NOT automatic, even where a CLAUDE.md lists it as a normal step: finish the local steps, then say the build is ready and wait to be told to release it.
