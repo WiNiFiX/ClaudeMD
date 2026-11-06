@@ -52,6 +52,11 @@ Every button control ID must start with `btn` (camelCase after it) and say what 
 - When you rename a button, change every reference in the same pass: the `ID`, `OnClick`/`OnCommand`, `DefaultButton="..."`, and the code-behind (controls and handler methods). Then check that no new duplicate ID or missing handler appeared.
 - When you add a button, name it right from the start. When you touch a page, fix any non-compliant button on it that you touch.
 
+## Python install location
+Any new Python install goes in `C:\Python` (one version-agnostic folder, never `C:\Python313`, `C:\Python314` and so on).
+- `C:\Windows\System32` and `AppData\Local\Programs` are permanently off limits: never install Python there or write Python files, packages, tools or output there.
+- Do not move or remove an existing Python install unless the user asks.
+
 ## Desktop app UI style
 For Windows desktop apps and tools, use a WebView2 HTML/CSS dark UI instead of native WinForms controls. Model it on `D:\AI\Need to pull latest version` (`wwwroot\index.html`, `app.css`, `app.js`, hosted by a .NET 8 WinForms shell; C# and the page talk through WebView2 messages).
 - Dark theme: bg `#0e0e12`, panels `#191922` / `#20202a`, borders `#2a2a36`, text `#e6e8f0`, accent `#7aa2f7`, green `#55c98a`, amber `#f5b942`, red `#f07178` (soft ~13% alpha variants for status chips).
